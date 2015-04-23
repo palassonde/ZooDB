@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 23, 2015 11:42:07 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="zoo.entity.Mesure" table="MESURE" schema="GJ191101" optimistic-lock="version">
+        <composite-id name="id" class="zoo.entity.MesureId">
+            <key-property name="idindividu" type="big_decimal">
+                <column name="IDINDIVIDU" precision="22" scale="0" />
+            </key-property>
+            <key-property name="datemesure" type="date">
+                <column name="DATEMESURE" length="7" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="individu" class="zoo.entity.Individu" update="false" insert="false" fetch="select">
+            <column name="IDINDIVIDU" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="poids" type="big_decimal">
+            <column name="POIDS" precision="10" not-null="true" />
+        </property>
+        <property name="taille" type="big_decimal">
+            <column name="TAILLE" precision="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

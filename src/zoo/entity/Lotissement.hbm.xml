@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 23, 2015 11:42:07 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="zoo.entity.Lotissement" table="LOTISSEMENT" schema="GJ191101" optimistic-lock="version">
+        <composite-id name="id" class="zoo.entity.LotissementId">
+            <key-property name="numero" type="big_decimal">
+                <column name="NUMERO" precision="22" scale="0" />
+            </key-property>
+            <key-property name="nomzone" type="string">
+                <column name="NOMZONE" length="50" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="zone" class="zoo.entity.Zone" update="false" insert="false" fetch="select">
+            <column name="NOMZONE" length="50" not-null="true" />
+        </many-to-one>
+        <set name="especes" table="ESPECE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LOTISSEMENT" precision="22" scale="0" not-null="true" />
+                <column name="NOMZONE" length="50" not-null="true" />
+            </key>
+            <one-to-many class="zoo.entity.Espece" />
+        </set>
+        <set name="surveillances" table="SURVEILLANCE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LOTISSEMENT" precision="22" scale="0" not-null="true" />
+                <column name="NOMZONE" length="50" not-null="true" />
+            </key>
+            <one-to-many class="zoo.entity.Surveillance" />
+        </set>
+    </class>
+</hibernate-mapping>

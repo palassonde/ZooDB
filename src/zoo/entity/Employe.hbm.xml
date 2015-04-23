@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 23, 2015 11:42:07 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="zoo.entity.Employe" table="EMPLOYE" schema="GJ191101" optimistic-lock="version">
+        <id name="code" type="string">
+            <column name="CODE" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="nas" type="big_decimal">
+            <column name="NAS" precision="22" scale="0" not-null="true" unique="true" />
+        </property>
+        <property name="nom" type="string">
+            <column name="NOM" length="150" not-null="true" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="PRENOM" length="150" not-null="true" />
+        </property>
+        <property name="naissancedate" type="date">
+            <column name="NAISSANCEDATE" length="7" not-null="true" />
+        </property>
+        <property name="nomjeunefille" type="string">
+            <column name="NOMJEUNEFILLE" length="150" not-null="true" />
+        </property>
+        <property name="adr" type="string">
+            <column name="ADR" length="600" not-null="true" />
+        </property>
+        <property name="tel" type="string">
+            <column name="TEL" length="15" not-null="true" />
+        </property>
+        <property name="fonction" type="string">
+            <column name="FONCTION" length="60" not-null="true" />
+        </property>
+        <property name="service" type="string">
+            <column name="SERVICE" length="45" not-null="true" />
+        </property>
+        <set name="salaires" table="SALAIRE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODEPREPOSE" length="3" not-null="true" />
+            </key>
+            <one-to-many class="zoo.entity.Salaire" />
+        </set>
+        <one-to-one name="chefdezone" class="zoo.entity.Chefdezone"></one-to-one>
+        <one-to-one name="surveillant" class="zoo.entity.Surveillant"></one-to-one>
+    </class>
+</hibernate-mapping>

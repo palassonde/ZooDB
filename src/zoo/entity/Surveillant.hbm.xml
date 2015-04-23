@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 23, 2015 11:42:07 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="zoo.entity.Surveillant" table="SURVEILLANT" schema="GJ191101" optimistic-lock="version">
+        <id name="code" type="string">
+            <column name="CODE" length="3" />
+            <generator class="foreign">
+                <param name="property">employe</param>
+            </generator>
+        </id>
+        <one-to-one name="employe" class="zoo.entity.Employe" constrained="true"></one-to-one>
+        <property name="taux" type="string">
+            <column name="TAUX" length="10" not-null="true" />
+        </property>
+        <property name="grade" type="string">
+            <column name="GRADE" length="2" not-null="true" />
+        </property>
+        <set name="choixes" table="CHOIX" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODESURVEILLANT" length="3" not-null="true" />
+            </key>
+            <one-to-many class="zoo.entity.Choix" />
+        </set>
+    </class>
+</hibernate-mapping>

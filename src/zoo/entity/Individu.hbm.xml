@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 23, 2015 11:42:07 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="zoo.entity.Individu" table="INDIVIDU" schema="GJ191101" optimistic-lock="version">
+        <id name="idindividu" type="long">
+            <column name="IDINDIVIDU" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="espece" class="zoo.entity.Espece" fetch="select">
+            <column name="NOMESPECE" length="50" not-null="true" />
+        </many-to-one>
+        <property name="nom" type="string">
+            <column name="NOM" length="50" not-null="true" />
+        </property>
+        <property name="naissancedate" type="date">
+            <column name="NAISSANCEDATE" length="7" not-null="true" />
+        </property>
+        <property name="decesdate" type="date">
+            <column name="DECESDATE" length="7" />
+        </property>
+        <property name="sang" type="string">
+            <column name="SANG" length="3" not-null="true" />
+        </property>
+        <property name="idpere" type="java.lang.Long">
+            <column name="IDPERE" precision="10" scale="0" />
+        </property>
+        <property name="idmere" type="java.lang.Long">
+            <column name="IDMERE" precision="10" scale="0" />
+        </property>
+        <set name="mesures" table="MESURE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDINDIVIDU" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="zoo.entity.Mesure" />
+        </set>
+    </class>
+</hibernate-mapping>

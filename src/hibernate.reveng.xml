@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-schema="GJ191101"/>
+  <table-filter match-name="ZONE"/>
+  <table-filter match-name="CHOIX"/>
+  <table-filter match-name="SURVEILLANCE"/>
+  <table-filter match-name="SALAIRE"/>
+  <table-filter match-name="LOTISSEMENT"/>
+  <table-filter match-name="MESURE"/>
+  <table-filter match-name="SURVEILLANT"/>
+  <table-filter match-name="ESPECE"/>
+  <table-filter match-name="EMPLOYE"/>
+  <table-filter match-name="INDIVIDU"/>
+  <table-filter match-name="CHEFDEZONE"/>
+</hibernate-reverse-engineering>

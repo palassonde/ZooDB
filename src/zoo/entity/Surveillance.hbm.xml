@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 23, 2015 11:42:07 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="zoo.entity.Surveillance" table="SURVEILLANCE" schema="GJ191101" optimistic-lock="version">
+        <composite-id name="id" class="zoo.entity.SurveillanceId">
+            <key-property name="code" type="string">
+                <column name="CODE" length="3" />
+            </key-property>
+            <key-property name="lotissement" type="big_decimal">
+                <column name="LOTISSEMENT" precision="22" scale="0" />
+            </key-property>
+            <key-property name="jour" type="string">
+                <column name="JOUR" length="10" />
+            </key-property>
+            <key-property name="heure" type="big_decimal">
+                <column name="HEURE" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="zone" class="zoo.entity.Zone" fetch="select">
+            <column name="NOMZONE" length="50" not-null="true" />
+        </many-to-one>
+        <many-to-one name="lotissement" class="zoo.entity.Lotissement" update="false" insert="false" fetch="select">
+            <column name="LOTISSEMENT" precision="22" scale="0" not-null="true" />
+            <column name="NOMZONE" length="50" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

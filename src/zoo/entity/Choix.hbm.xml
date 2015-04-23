@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 23, 2015 11:42:07 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="zoo.entity.Choix" table="CHOIX" schema="GJ191101" optimistic-lock="version">
+        <composite-id name="id" class="zoo.entity.ChoixId">
+            <key-property name="codesurveillant" type="string">
+                <column name="CODESURVEILLANT" length="3" />
+            </key-property>
+            <key-property name="nomzone" type="string">
+                <column name="NOMZONE" length="50" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="zone" class="zoo.entity.Zone" update="false" insert="false" fetch="select">
+            <column name="NOMZONE" length="50" not-null="true" />
+        </many-to-one>
+        <many-to-one name="surveillant" class="zoo.entity.Surveillant" update="false" insert="false" fetch="select">
+            <column name="CODESURVEILLANT" length="3" not-null="true" />
+        </many-to-one>
+        <property name="affinite" type="string">
+            <column name="AFFINITE" length="3" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
